@@ -5,8 +5,8 @@ import RegisterView from "./views/auth/RegisterView";
 import UserHomeView from "./views/user/UserHomeView";
 import AppLayout from "./layouts/app/AppLayout";
 import UserAppointmentsView from "./views/user/UserAppointmentsView";
-import CalendarView from "./views/boss/CalendarView";
 import BossHomeView from "./views/boss/BossHomeView";
+import BossScheduleView from "./views/boss/BossScheduleView";
 
 export default function AppRouter() {
   return (
@@ -22,7 +22,7 @@ export default function AppRouter() {
           <Route path="/user-home" element={<UserHomeView />} />
           <Route path="/user-appointments" element={<UserAppointmentsView />} />
           <Route path="/boss-home" element={<BossHomeView />} />
-          <Route path="/boss-calendar"  element={<CalendarView />} />
+          <Route path="/boss-schedule" element={<BossScheduleView />} />
         </Route>
 
         <Route path="*" />

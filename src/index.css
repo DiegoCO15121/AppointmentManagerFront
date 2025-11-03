@@ -1,39 +1,35 @@
 @import "tailwindcss";
 
-
-.shadow-card {
-  box-shadow: 16px 32px 25px 4px rgba(35, 34, 34, 0.67);
-}
-
-/* Sobrescribir estilos por defecto del calendario */
-.rbc-calendar {
-  border-radius: 0.5rem; /* rounded-lg */
+/* .rbc-calendar {
+  border-radius: 0.5rem; 
   overflow: hidden;
-}
+} */
 
 .rbc-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 0.75rem !important;
 }
 
-.rbc-toolbar button {
-  background-color: #3b82f6; /* bg-blue-500 */
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  transition: background-color 0.2s;
+
+
+.rbc-toolbar button  {
+  background-color: oklch(37.9% 0.146 265.522) !important;
+  color: white !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 0.375rem !important;
+  font-size: 0.875rem !important;
+  transition: background-color 0.2s !important;
 }
 
 .rbc-toolbar button:hover {
-  background-color: #2563eb; /* bg-blue-600 */
+  background-color: oklch(42.4% 0.199 265.638) !important; 
 }
 
 .rbc-header {
-  background-color: #f3f4f6; /* bg-gray-100 */
-  color: #374151; /* text-gray-700 */
+  background-color: #f3f4f6; 
+  color: #374151; 
   font-weight: 600;
   font-size: 0.875rem;
   padding: 0.25rem 0;
@@ -42,12 +38,13 @@
 }
 
 .rbc-today {
-  background-color: #dbeafe; /* bg-blue-50 */
+  background-color: #dbeafe;
 }
 
-.rbc-event {
+/* .rbc-event {
   border-radius: 0.25rem;
   font-size: 0.75rem;
   cursor: pointer;
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-}
+} */
+
