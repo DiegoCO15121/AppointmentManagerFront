@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-/* .rbc-calendar {
-  border-radius: 0.5rem; 
-  overflow: hidden;
-} */
-
 .rbc-toolbar {
   display: flex !important;
   justify-content: space-between !important;
@@ -12,9 +7,7 @@
   margin-bottom: 0.75rem !important;
 }
 
-
-
-.rbc-toolbar button  {
+.rbc-toolbar button {
   background-color: oklch(37.9% 0.146 265.522) !important;
   color: white !important;
   padding: 0.25rem 0.75rem !important;
@@ -24,12 +17,12 @@
 }
 
 .rbc-toolbar button:hover {
-  background-color: oklch(42.4% 0.199 265.638) !important; 
+  background-color: oklch(42.4% 0.199 265.638) !important;
 }
 
 .rbc-header {
-  background-color: #f3f4f6; 
-  color: #374151; 
+  background-color: #f3f4f6;
+  color: #374151;
   font-weight: 600;
   font-size: 0.875rem;
   padding: 0.25rem 0;
@@ -47,4 +40,3 @@
   cursor: pointer;
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 } */
-

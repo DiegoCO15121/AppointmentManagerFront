@@ -40,3 +40,11 @@ export const areas = [
   { id: 3, area: "Ciencias Sociales y Humanidades" },
   { id: 4, area: "Económico Administrativas" },
 ];
+
+
+export const dataChart = [
+  {status: "Aprobadas", appointments: 5, color: "oklch(79.2% 0.209 151.711)"},
+  {status: "Pendientes", appointments: 2, color: "oklch(85.2% 0.199 91.936)"},
+  {status: "Canceladas", appointments: 3, color: "oklch(63.7% 0.237 25.331)"},
+  {status: "Pospuestas", appointments: 1, color: "oklch(75% 0.183 55.934)"},
+]

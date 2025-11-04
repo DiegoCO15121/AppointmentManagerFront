@@ -1,4 +1,3 @@
-import BossAsideBar from "@/components/boss/BossAsideBar";
 import Navbar from "@/components/general/navbar/Navbar";
 import UserAsideBar from "@/components/user/UserAsideBar";
 import { bossLinks } from "@/data/boss";
@@ -6,7 +5,7 @@ import { userLinks } from "@/data/user";
 import { Outlet, useLocation } from "react-router-dom";
 
 export default function AppLayout() {
-  const sideBarUrls = ["/user-home", "/boss-home"];
+  const sideBarUrls = ["/user-home"];
   const location = useLocation();
   const currentLocation = location.pathname;
   const regex = [/user/, /boss/];
@@ -38,7 +37,6 @@ export default function AppLayout() {
       {isSidebarLayout && (
         <aside className="bg-blue-950 w-64 fixed right-0 top-0 h-full z-10 hidden md:block">
           {regex[0].test(currentLocation) && <UserAsideBar />}
-          {regex[1].test(currentLocation) && <BossAsideBar />}
         </aside>
       )}
 
