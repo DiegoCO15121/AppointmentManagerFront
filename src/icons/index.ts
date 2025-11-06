@@ -1,4 +1,4 @@
-import { MdDateRange, MdEventNote } from "react-icons/md";
+import { MdDateRange, MdEventNote, MdPersonSearch  } from "react-icons/md";
 import {
   FaCheck,
   FaClock,
@@ -7,6 +7,10 @@ import {
   FaBuilding,
   FaHome,
   FaCalendarAlt,
+  FaPlus,
+  FaUserPlus,
+  FaTrashAlt,
+  FaEdit,
 } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -23,4 +27,9 @@ export {
   GiHamburgerMenu,
   FaHome,
   FaCalendarAlt,
+  FaPlus,
+  FaUserPlus,
+  FaTrashAlt,
+  FaEdit,
+  MdPersonSearch
 };

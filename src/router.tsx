@@ -7,6 +7,7 @@ import AppLayout from "./layouts/app/AppLayout";
 import UserAppointmentsView from "./views/user/UserAppointmentsView";
 import BossHomeView from "./views/boss/BossHomeView";
 import BossScheduleView from "./views/boss/BossScheduleView";
+import AdminHomeView from "./views/admin/AdminHomeView";
 
 export default function AppRouter() {
   return (
@@ -23,6 +24,7 @@ export default function AppRouter() {
           <Route path="/user-appointments" element={<UserAppointmentsView />} />
           <Route path="/boss-home" element={<BossHomeView />} />
           <Route path="/boss-schedule" element={<BossScheduleView />} />
+          <Route path="/admin-home" element={<AdminHomeView />} />
         </Route>
 
         <Route path="*" />

@@ -48,3 +48,12 @@ export const dataChart = [
   {status: "Canceladas", appointments: 3, color: "oklch(63.7% 0.237 25.331)"},
   {status: "Pospuestas", appointments: 1, color: "oklch(75% 0.183 55.934)"},
 ]
+
+export const adminArea = [
+  { name: "Josue Barrita", email: "barrita@correo.com" },
+  { name: "Laura Gómez", email: "lgomez@correo.com" },
+  { name: "Carlos Pérez", email: "cperez@correo.com" },
+  { name: "Mariana Torres", email: "mtorres@correo.com" },
+  { name: "Andrés Rivera", email: "arivera@correo.com" },
+  { name: "Sofía Hernández", email: "shernandez@correo.com" }
+];

@@ -5,6 +5,7 @@ import { NavLink, type NavLinkRenderProps } from "react-router-dom";
 import type { LinkType } from "@/types/index";
 import { linkUserIcons } from "@/data/user";
 import { linkBossIcons } from "@/data/boss";
+import { linkAdminIcons } from "@/data/admin";
 
 type NavbarProps = {
   links: LinkType[];
@@ -20,7 +21,7 @@ export default function Navbar({ links, currentLocation }: NavbarProps) {
 
   const linkIcons = /user/.test(currentLocation)
     ? linkUserIcons
-    : /boss/.test(currentLocation) ? linkBossIcons : []
+    : /boss/.test(currentLocation) ? linkBossIcons : linkAdminIcons
 
   return (
     <>

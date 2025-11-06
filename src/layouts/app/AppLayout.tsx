@@ -1,5 +1,6 @@
 import Navbar from "@/components/general/navbar/Navbar";
 import UserAsideBar from "@/components/user/UserAsideBar";
+import { adminLinks } from "@/data/admin";
 import { bossLinks } from "@/data/boss";
 import { userLinks } from "@/data/user";
 import { Outlet, useLocation } from "react-router-dom";
@@ -15,7 +16,7 @@ export default function AppLayout() {
     ? userLinks
     : regex[1].test(currentLocation)
     ? bossLinks
-    : [];
+    : adminLinks;
 
   return (
     <div className="min-h-screen flex flex-col">
