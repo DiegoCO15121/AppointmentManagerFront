@@ -11,9 +11,11 @@ import {
   FaUserPlus,
   FaTrashAlt,
   FaEdit,
+  FaSearch 
 } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { IoCloseSharp } from "react-icons/io5";
 
 export {
   MdDateRange,
@@ -31,5 +33,7 @@ export {
   FaUserPlus,
   FaTrashAlt,
   FaEdit,
-  MdPersonSearch
+  MdPersonSearch,
+  IoCloseSharp,
+  FaSearch 
 };

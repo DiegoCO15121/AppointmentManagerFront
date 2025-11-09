@@ -1,8 +1,8 @@
 import { FaBuilding, FaHome } from "@/icons/index";
 
 export const adminLinks = [
-  { name: "Home", link: "/boss-home" },
-  { name: "Administrar Áreas", link: "/boss-appointments" },
+  { name: "Home", link: "/admin-home" },
+  { name: "Administrar Áreas", link: "/admin-areas" },
 ];
 
 export const linkAdminIcons = [FaHome, FaBuilding];

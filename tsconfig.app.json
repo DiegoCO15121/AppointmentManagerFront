@@ -17,7 +17,8 @@
       "@/types/*" : ["types/*"],
       "@/utils/*" : ["utils/*"], 
       "@/icons/*" : ["icons/*"],
-      "@/data/*" : ["data/*"]
+      "@/data/*" : ["data/*"],
+      "@/store/*" : ["store/*"]
 
     },
 

@@ -1,17 +1,29 @@
 import type { IconType } from "react-icons";
 import { FaPlus } from "@/icons/index";
+import { useAppStore } from "@/store/useAppStore";
+import type { ModalType } from "@/types/index";
 
 type DashboardCardProps = {
+  id: ModalType
   title: string;
   description: string;
   Icon: IconType;
 };
 
 export default function DashboardAddCard({
+  id,
   title,
   description,
   Icon,
 }: DashboardCardProps) {
+
+  const {setIsOpen, openModal} = useAppStore();
+
+  const handleClick = () => {
+    setIsOpen();
+    openModal(id);
+  }
+
   return (
     <div
       className="bg-blue-50 border-3 border-blue-900 p-4 flex flex-col gap-3 justify-center max-w-70 rounded-lg 
@@ -23,7 +35,7 @@ export default function DashboardAddCard({
       </div>
       <p className="text-lg text-gray-500 text-center">{description}</p>
 
-      <button className="text-white flex gap-3 py-2 px-3 rounded-lg bg-blue-900 hover:bg-blue-800 hover:cursor-pointer justify-center items-center">
+      <button type="button" onClick={handleClick} className="text-white flex gap-3 py-2 px-3 rounded-lg bg-blue-900 hover:bg-blue-800 hover:cursor-pointer justify-center items-center">
         <FaPlus className="w-4 h-4" />
         <p className="uppercase font-bold">Añadir</p>
       </button>

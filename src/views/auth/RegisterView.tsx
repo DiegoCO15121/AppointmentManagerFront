@@ -47,19 +47,19 @@ export default function RegisterView() {
               <InputField
                 register={register}
                 labelText="Apellido Paterno"
-                name="lastName"
+                name="last_name"
                 placeholder="Tu Apellido Paterno"
                 required="El Apellido Paterno es obligatorio"
-                error={errors.lastName?.message}
+                error={errors.last_name?.message}
               />
 
               <InputField
                 register={register}
                 labelText="Apellido Materno"
-                name="motherLastName"
+                name="second_last_name"
                 placeholder="Tu Apellido Materno"
                 required="El Apellido Materno es obligatorio"
-                error={errors.motherLastName?.message}
+                error={errors.second_last_name?.message}
               />
 
               <div className="flex flex-col gap-2">

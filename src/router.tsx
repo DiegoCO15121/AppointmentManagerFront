@@ -8,6 +8,7 @@ import UserAppointmentsView from "./views/user/UserAppointmentsView";
 import BossHomeView from "./views/boss/BossHomeView";
 import BossScheduleView from "./views/boss/BossScheduleView";
 import AdminHomeView from "./views/admin/AdminHomeView";
+import AdminAreasView from "./views/admin/AdminAreasView";
 
 export default function AppRouter() {
   return (
@@ -25,6 +26,7 @@ export default function AppRouter() {
           <Route path="/boss-home" element={<BossHomeView />} />
           <Route path="/boss-schedule" element={<BossScheduleView />} />
           <Route path="/admin-home" element={<AdminHomeView />} />
+          <Route path="/admin-areas" element={<AdminAreasView />} />
         </Route>
 
         <Route path="*" />
