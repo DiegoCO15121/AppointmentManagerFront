@@ -2,23 +2,30 @@ import z from "zod";
 
 const UserSchema = z.object({
   id: z.string(),
-  name: z.string(),
-  last_name: z.string(),
-  second_last_name: z.string(),
+  names: z.string(),
+  lastName: z.string(),
+  secondLastName: z.string(),
   email: z.string(),
   password: z.string(),
-  gender: z.enum(["F", "M", "O"]),
+  gender: z.enum(["masculino", "femenino",]),
 });
 
-const BossSchema = z.object({
-    id: z.string(),
-    user: UserSchema,
-    rol: z.string(),
+const VisitorSchema = UserSchema.extend({
+  birth_date: z.string(),
+  phoneNumber: z.string(),
+  birthDate: z.string()
 })
 
-export type UserType = z.infer<typeof UserSchema>;
-export type BossType = z.infer<typeof BossSchema>;
+const BossSchema = z.object({
+  id: z.string(),
+  user: UserSchema,
+});
 
-export type AddBossType = Omit<UserType, "id"| "password"> /* & Pick<BossType, "rol"> */ & {
-    area_id: string
-}
+export type UserType = z.infer<typeof UserSchema>;
+
+export type VisitorType = z.infer<typeof VisitorSchema>
+
+export type BossType = z.infer<typeof BossSchema>;
+export type AddBossType = Omit<UserType, "id" | "password"> & {
+  area_id: string;
+};

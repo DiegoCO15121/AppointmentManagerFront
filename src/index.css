@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import 'primereact/resources/themes/lara-light-blue/theme.css';
 
 .rbc-toolbar {
   display: flex !important;

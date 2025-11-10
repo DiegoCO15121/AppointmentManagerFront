@@ -12,25 +12,30 @@ import AdminAreasView from "./views/admin/AdminAreasView";
 
 export default function AppRouter() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to={"/login"} replace />} />
-        <Route element={<AuthLayout />}>
-          <Route path="/login" element={<LoginView />} />
-          <Route path="/register" element={<RegisterView />} />
-        </Route>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to={"/login"} replace />} />
+          <Route element={<AuthLayout />}>
+            <Route path="/login" element={<LoginView />} />
+            <Route path="/register" element={<RegisterView />} />
+          </Route>
 
-        <Route element={<AppLayout />}>
-          <Route path="/user-home" element={<UserHomeView />} />
-          <Route path="/user-appointments" element={<UserAppointmentsView />} />
-          <Route path="/boss-home" element={<BossHomeView />} />
-          <Route path="/boss-schedule" element={<BossScheduleView />} />
-          <Route path="/admin-home" element={<AdminHomeView />} />
-          <Route path="/admin-areas" element={<AdminAreasView />} />
-        </Route>
+          <Route element={<AppLayout />}>
+            <Route path="/user-home" element={<UserHomeView />} />
+            <Route
+              path="/user-appointments"
+              element={<UserAppointmentsView />}
+            />
+            <Route path="/boss-home" element={<BossHomeView />} />
+            <Route path="/boss-schedule" element={<BossScheduleView />} />
+            <Route path="/admin-home" element={<AdminHomeView />} />
+            <Route path="/admin-areas" element={<AdminAreasView />} />
+          </Route>
 
-        <Route path="*" />
-      </Routes>
-    </BrowserRouter>
+          <Route path="*" />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
