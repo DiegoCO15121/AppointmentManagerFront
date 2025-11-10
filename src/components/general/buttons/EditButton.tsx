@@ -1,12 +1,12 @@
 import type { MouseEventHandler } from "react";
 import { FaEdit } from "@/icons/index";
 
-type DeleteButtonProps = {
+type EditButtonProps = {
   onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 
-export default function EditButton({onClick} : DeleteButtonProps) {
+export default function EditButton({onClick} : EditButtonProps) {
   return (
     <button
           onClick={onClick}

@@ -3,7 +3,7 @@ import InputField from "@/components/general/inputs/InputField";
 import type { AddAreaType } from "@/types/area/area.types";
 import { useForm } from "react-hook-form";
 
-export default function AddAreaModal() {
+export default function AreaModal() {
   const {
     register,
     handleSubmit,

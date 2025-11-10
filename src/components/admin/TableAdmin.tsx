@@ -5,7 +5,7 @@ import { useAppStore } from "@/store/useAppStore";
 export default function TableAdmin() {
   const { setIsOpen, openModal } = useAppStore();
 
-  const handleClick = () => {
+  const handleEdit = () => {
     setIsOpen();
     openModal("edit-boss");
   };
@@ -45,7 +45,7 @@ export default function TableAdmin() {
                 </button>
                 <button
                   type="button"
-                  onClick={handleClick}
+                  onClick={handleEdit}
                   className="p-3 rounded-lg border border-gray-400 text-gray-500 hover:bg-yellow-100 hover:text-yellow-500 hover:border-yellow-500 transition-colors"
                 >
                   <FaEdit className="w-4 h-4" />

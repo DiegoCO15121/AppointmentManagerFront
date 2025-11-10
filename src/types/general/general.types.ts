@@ -3,4 +3,4 @@ export type LinkType = {
     link: string;
 }
 
-export type ModalType = "create-boss" | "create-area" | "search-boss" | "edit-boss" |null
+export type ModalType =  null | "add-boss" | "add-area" | "search-boss" | "edit-boss" | "edit-area"

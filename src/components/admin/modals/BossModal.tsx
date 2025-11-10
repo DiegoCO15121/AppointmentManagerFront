@@ -5,7 +5,7 @@ import type { AddBossType } from "@/types/index";
 
 import { useForm } from "react-hook-form";
 
-export default function AddBossModal() {
+export default function BossModal() {
   const {
     register,
     formState: { errors },
