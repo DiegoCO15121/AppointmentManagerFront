@@ -1,3 +1,4 @@
+
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import SpinnerView from "@/views/loading/SpinnerView";
 import { Navigate, Outlet, } from "react-router-dom";

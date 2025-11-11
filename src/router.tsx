@@ -14,6 +14,8 @@ import ProtectedRoutesMiddleware from "./middlewares/ProtectedRoutesMiddleware";
 import VisitorMiddleware from "./middlewares/VisitorMiddleware";
 import BossMiddleware from "./middlewares/BossMiddleware";
 import AdminMiddleware from "./middlewares/AdminMiddleware";
+import ForgottenPassword from "./views/auth/ForgottenPassword";
+import ResetPassword from "./views/auth/ResetPassword";
 
 export default function AppRouter() {
   return (
@@ -25,7 +27,10 @@ export default function AppRouter() {
           <Route element={<AuthLayout />}>
             <Route path="/login" element={<LoginView />} />
             <Route path="/register" element={<RegisterView />} />
+            <Route path="/forgotten-password" element={<ForgottenPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
           </Route>
+
           <Route element={<AppLayout />}>
             <Route element={<ProtectedRoutesMiddleware />}>
               <Route element={<VisitorMiddleware />}>

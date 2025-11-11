@@ -15,7 +15,7 @@ import {
 } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IoCloseSharp } from "react-icons/io5";
+import { IoCloseSharp, IoLogOut  } from "react-icons/io5";
 import { IoIosReturnLeft } from "react-icons/io";
 
 export {
@@ -37,5 +37,6 @@ export {
   MdPersonSearch,
   IoCloseSharp,
   FaSearch,
-  IoIosReturnLeft 
+  IoIosReturnLeft,
+  IoLogOut 
 };

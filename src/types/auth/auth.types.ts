@@ -19,3 +19,8 @@ export type InputFieldType<T extends FieldValues> = {
   strength?: boolean;
   password?: string;
 };
+
+export type ResetPasswordType = {
+  newPassword: string,
+  token: string,
+}

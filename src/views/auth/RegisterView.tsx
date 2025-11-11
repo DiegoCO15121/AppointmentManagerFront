@@ -8,6 +8,7 @@ import { useForm, useWatch } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { birthdateValidation } from "@/utils/auth/birthdateValidation";
 import { useRegister } from "@/hooks/useRegister";
+
 import { arePasswordsEquals } from "@/utils/auth/passwordValidation";
 
 export default function RegisterView() {
@@ -191,7 +192,8 @@ export default function RegisterView() {
 
             <input
               type="submit"
-              className="bg-blue-900 text-white font-bold w-full rounded-lg p-3 hover:cursor-pointer hover:bg-blue-500"
+              className="bg-blue-900 text-white font-bold w-full rounded-lg p-3 hover:cursor-pointer hover:bg-blue-500
+              uppercase"
               value={"Registrarse"}
             />
           </form>

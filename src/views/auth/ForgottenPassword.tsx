@@ -1,26 +1,23 @@
 import InputField from "@/components/general/inputs/InputField";
-import InputPassword from "@/components/general/inputs/InputPassword";
-import { useLogin } from "@/hooks/useLogin";
-
+import { useForgottenPassword } from "@/hooks/useForgottenPasword";
 import type { LoginType } from "@/types/index";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
-export default function LoginView() {
+export default function ForgottenPassword() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginType>();
+  } = useForm<{ email: LoginType["email"] }>();
+  const { mutate } = useForgottenPassword();
 
-  const { mutate } = useLogin();
-
-  const handleLogin = (loginData: LoginType) => {
-    mutate(loginData);
+  const handleReset = ({ email }: { email: LoginType["email"] }) => {
+    mutate(email);
   };
 
   return (
-    <div className="bg-blue-900 px-4 py-10 gap-5 rounded-lg flex flex-col md:flex-row items-center justify-center shadow-card w-full min-w-3xs max-w-6xl max-h-11/12">
+    <div className="bg-blue-900 px-4 py-10 gap-5 rounded-lg flex flex-col items-center justify-center shadow-card w-full min-w-3xs max-w-3xl max-h-11/12">
       <img
         src="/IMAGOTIPO_LASALLE_OAXACA.png"
         alt="laSalleOax"
@@ -30,8 +27,12 @@ export default function LoginView() {
       <div className="w-full max-w-xl flex flex-col items-center gap-5">
         <form
           className="bg-white py-4 px-6 rounded-md w-full flex flex-col gap-5"
-          onSubmit={handleSubmit(handleLogin)}
+          onSubmit={handleSubmit(handleReset)}
         >
+          <p className="text-xl text-center text-blue-900">
+            Escribe el correo asociado a tu cuenta para que podamos mandar un
+            link de restablecimiento.
+          </p>
           <InputField
             register={register}
             labelText="Email"
@@ -40,26 +41,18 @@ export default function LoginView() {
             required="El email es obligatorio"
             error={errors.email?.message}
           />
-          <InputPassword
-            labelText="Contraseña"
-            placeholder="Tu contraseña"
-            name="password"
-            required="La contraseña es obligatoria"
-            error={errors.password?.message}
-            register={register}
-          />
 
           <input
             type="submit"
             className="bg-blue-900 text-white font-bold w-full rounded-lg p-3 hover:cursor-pointer hover:bg-blue-500 uppercase"
-            value={"Inciar Sesión"}
+            value={"Mandar correo de restablecimiento"}
           />
         </form>
 
         <div className="flex flex-col space-y-3">
           <div className="flex text-white">
             <p>
-              ¿Aun no tienes cuenta?, {" "}
+              ¿Aun no tienes cuenta?,{" "}
               <Link to={"/register"} className="hover:underline">
                 registrate aquí.
               </Link>
@@ -68,9 +61,9 @@ export default function LoginView() {
 
           <div className="flex text-white">
             <p>
-              ¿Olvidaste tu contraseña?,{" "}
-              <Link to={"/forgotten-password"} className="hover:underline">
-                recuperala aquí.
+              ¿Recordaste tu contraseña?,{" "}
+              <Link to={"/login"} className="hover:underline">
+                logueate aquí.
               </Link>
             </p>
           </div>

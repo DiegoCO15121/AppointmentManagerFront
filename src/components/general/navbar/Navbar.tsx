@@ -1,11 +1,12 @@
 import HeaderLink from "../links/HeaderLink";
-import { GiHamburgerMenu } from "@/icons/index";
+import { GiHamburgerMenu, IoLogOut } from "@/icons/index";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { NavLink, type NavLinkRenderProps } from "react-router-dom";
 import type { LinkType } from "@/types/index";
 import { linkUserIcons } from "@/data/user";
 import { linkBossIcons } from "@/data/boss";
 import { linkAdminIcons } from "@/data/admin";
+import { useLogOut } from "@/hooks/useLogOut";
 
 type NavbarProps = {
   links: LinkType[];
@@ -19,9 +20,17 @@ export default function Navbar({ links, currentLocation }: NavbarProps) {
     }`;
   };
 
+  const { mutate } = useLogOut();
+
   const linkIcons = /user/.test(currentLocation)
     ? linkUserIcons
-    : /boss/.test(currentLocation) ? linkBossIcons : linkAdminIcons
+    : /boss/.test(currentLocation)
+    ? linkBossIcons
+    : linkAdminIcons;
+
+  const handleLogOut = () => {
+    mutate();
+  };
 
   return (
     <>
@@ -34,6 +43,13 @@ export default function Navbar({ links, currentLocation }: NavbarProps) {
             link={link.link}
           />
         ))}
+        <button
+          onClick={handleLogOut}
+          className="uppercase font-bold hover:bg-blue-800 bg-blue-900 rounded-lg text-center p-3 text-sm 
+        transition-colors duration-500 text-white"
+        >
+          Cerrar Sesión
+        </button>
       </nav>
 
       <div className="md:hidden">
@@ -68,6 +84,16 @@ export default function Navbar({ links, currentLocation }: NavbarProps) {
                 </MenuItem>
               );
             })}
+
+            <MenuItem>
+              <button
+                onClick={handleLogOut}
+                className="group flex justify-between w-full items-center rounded-lg px-3 py-1.5 data-focus:bg-blue-900/60"
+              >
+                <p>Cerrar Sesión</p>
+                <IoLogOut />
+              </button>
+            </MenuItem>
           </MenuItems>
         </Menu>
       </div>

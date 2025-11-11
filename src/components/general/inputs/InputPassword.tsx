@@ -2,12 +2,11 @@ import ErrorMessage from "../ErrorMessage";
 import { FaEye, FaEyeSlash } from "@/icons/index";
 import { useState } from "react";
 import PasswordSBar from "@/components/auth/PasswordBar";
-import {
-  validatePassword
-} from "@/utils/auth/passwordValidation";
-import type { InputFieldType, LoginType } from "@/types/index";
+import { validatePassword } from "@/utils/auth/passwordValidation";
+import type { InputFieldType } from "@/types/index";
+import type { FieldValues } from "react-hook-form";
 
-export default function InputPassword<T extends LoginType>({
+export default function InputPassword<T extends FieldValues>({
   labelText,
   placeholder,
   register,
@@ -34,9 +33,7 @@ export default function InputPassword<T extends LoginType>({
           {...register(name, {
             required,
             validate: (value: string) =>
-              strength === undefined
-                ? true
-                : validatePassword(value)
+              strength === undefined ? true : validatePassword(value),
           })}
         />
 
