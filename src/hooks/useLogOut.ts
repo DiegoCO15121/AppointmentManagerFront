@@ -18,7 +18,7 @@ export const useLogOut = () => {
         life: 3000,
       });
 
-      queryClient.cancelQueries({ queryKey: ["currentUser"] });
+      queryClient.resetQueries({ queryKey: ["currentUser"] });
 
       navigate("/login");
     },

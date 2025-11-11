@@ -56,7 +56,7 @@ export default function LoginView() {
           />
         </form>
 
-        <div className="flex flex-col space-y-3">
+        <div className="flex flex-col space-y-3 items-center">
           <div className="flex text-white">
             <p>
               ¿Aun no tienes cuenta?, {" "}
