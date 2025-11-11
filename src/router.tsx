@@ -9,6 +9,11 @@ import BossHomeView from "./views/boss/BossHomeView";
 import BossScheduleView from "./views/boss/BossScheduleView";
 import AdminHomeView from "./views/admin/AdminHomeView";
 import AdminAreasView from "./views/admin/AdminAreasView";
+import NotFoundView from "./views/error/NotFoundView";
+import ProtectedRoutesMiddleware from "./middlewares/ProtectedRoutesMiddleware";
+import VisitorMiddleware from "./middlewares/VisitorMiddleware";
+import BossMiddleware from "./middlewares/BossMiddleware";
+import AdminMiddleware from "./middlewares/AdminMiddleware";
 
 export default function AppRouter() {
   return (
@@ -16,24 +21,34 @@ export default function AppRouter() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to={"/login"} replace />} />
+
           <Route element={<AuthLayout />}>
             <Route path="/login" element={<LoginView />} />
             <Route path="/register" element={<RegisterView />} />
           </Route>
-
           <Route element={<AppLayout />}>
-            <Route path="/user-home" element={<UserHomeView />} />
-            <Route
-              path="/user-appointments"
-              element={<UserAppointmentsView />}
-            />
-            <Route path="/boss-home" element={<BossHomeView />} />
-            <Route path="/boss-schedule" element={<BossScheduleView />} />
-            <Route path="/admin-home" element={<AdminHomeView />} />
-            <Route path="/admin-areas" element={<AdminAreasView />} />
+            <Route element={<ProtectedRoutesMiddleware />}>
+              <Route element={<VisitorMiddleware />}>
+                <Route path="/user-home" element={<UserHomeView />} />
+                <Route
+                  path="/user-appointments"
+                  element={<UserAppointmentsView />}
+                />
+              </Route>
+
+              <Route element={<BossMiddleware />}>
+                <Route path="/boss-home" element={<BossHomeView />} />
+                <Route path="/boss-schedule" element={<BossScheduleView />} />
+              </Route>
+
+              <Route element={<AdminMiddleware />}>
+                <Route path="/admin-home" element={<AdminHomeView />} />
+                <Route path="/admin-areas" element={<AdminAreasView />} />
+              </Route>
+            </Route>
           </Route>
 
-          <Route path="*" />
+          <Route path="*" element={<NotFoundView />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -21,6 +21,7 @@
       "@/store/*" : ["store/*"],
       "@/api/*" : ["api/*"],
       "@/lib/*" : ["lib/*"],
+      "@/middlewares/*" : ["middlewares/*"],
 
     },
 

@@ -1,6 +1,7 @@
 import InputField from "@/components/general/inputs/InputField";
 import InputPassword from "@/components/general/inputs/InputPassword";
-import type { authFormType } from "@/types/index";
+import { useLogin } from "@/hooks/useLogin";
+import type { LoginType } from "@/types/index";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
@@ -9,9 +10,13 @@ export default function LoginView() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<authFormType>();
+  } = useForm<LoginType>();
 
-  const handleLogin = () => {};
+  const { mutate } = useLogin();
+
+  const handleLogin = (loginData: LoginType) => {
+    mutate(loginData);
+  };
 
   return (
     <div className="bg-blue-900 px-4 py-10 gap-5 rounded-lg flex flex-col md:flex-row items-center justify-center shadow-card w-full min-w-3xs max-w-6xl max-h-11/12">
@@ -50,13 +55,24 @@ export default function LoginView() {
           />
         </form>
 
-        <div className="flex text-white">
-          <p>
-            ¿Aun no tienes cuenta?,{" "}
-            <Link to={"/register"} className="hover:underline">
-              registrate aquí.
-            </Link>
-          </p>
+        <div className="flex flex-col space-y-3">
+          <div className="flex text-white">
+            <p>
+              ¿Aun no tienes cuenta?,{" "}
+              <Link to={"/register"} className="hover:underline">
+                registrate aquí.
+              </Link>
+            </p>
+          </div>
+
+          {/* <div className="flex text-white">
+            <p>
+              ¿?,{" "}
+              <Link to={"/register"} className="hover:underline">
+                registrate aquí.
+              </Link>
+            </p>
+          </div> */}
         </div>
       </div>
     </div>

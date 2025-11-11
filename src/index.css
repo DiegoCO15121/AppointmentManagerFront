@@ -41,3 +41,30 @@
   cursor: pointer;
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 } */
+
+.loader {
+  box-sizing: border-box;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  animation: spin 1s linear infinite;
+}
+.loader:after, .loader:before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  border-radius: 50%;
+  background: oklch(37.9% 0.146 265.522);
+  animation: spin 1s linear infinite;
+  transform-origin: 0px 100%;
+}
+.loader:before {
+  transform-origin: 0 50%;
+  background: oklch(80.9% 0.105 251.813);
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

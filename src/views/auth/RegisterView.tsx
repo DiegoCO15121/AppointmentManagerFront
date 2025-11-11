@@ -8,6 +8,7 @@ import { useForm, useWatch } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { birthdateValidation } from "@/utils/auth/birthdateValidation";
 import { useRegister } from "@/hooks/useRegister";
+import { arePasswordsEquals } from "@/utils/auth/passwordValidation";
 
 export default function RegisterView() {
   const {
@@ -162,7 +163,7 @@ export default function RegisterView() {
                       {...register("confirmPassword", {
                         required: "La confirmación es obligatoria",
                         validate: (value) =>
-                          value === password || "Las contraseñas no coinciden",
+                          arePasswordsEquals(value, password),
                       })}
                     />
 

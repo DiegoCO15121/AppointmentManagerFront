@@ -1,11 +1,13 @@
 import type { FieldValues, Path, UseFormRegister } from "react-hook-form";
 import type { VisitorType } from "../user/user.types";
 
-export type RawRegisterType = VisitorType & {
-  confirmPassword: string
+export type RawRegisterType = Omit<VisitorType, "userId"> & {
+  password: string,
+  confirmPassword: string;
 };
 
-export type RegisterType = VisitorType;
+export type RegisterType = Omit<RawRegisterType, "confirmPassword">;
+export type LoginType = Pick<RegisterType, "email" | "password">;
 
 export type InputFieldType<T extends FieldValues> = {
   labelText: string;

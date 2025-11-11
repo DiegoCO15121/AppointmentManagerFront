@@ -16,6 +16,7 @@ import {
 import { ImCross } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseSharp } from "react-icons/io5";
+import { IoIosReturnLeft } from "react-icons/io";
 
 export {
   MdDateRange,
@@ -35,5 +36,6 @@ export {
   FaEdit,
   MdPersonSearch,
   IoCloseSharp,
-  FaSearch 
+  FaSearch,
+  IoIosReturnLeft 
 };

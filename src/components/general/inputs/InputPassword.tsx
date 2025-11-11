@@ -1,11 +1,13 @@
-import type { InputFieldType } from "@/types/index";
 import ErrorMessage from "../ErrorMessage";
 import { FaEye, FaEyeSlash } from "@/icons/index";
 import { useState } from "react";
 import PasswordSBar from "@/components/auth/PasswordBar";
-import { arePasswordsEquals, validatePassword } from "@/utils/auth/passwordValidation";
+import {
+  validatePassword
+} from "@/utils/auth/passwordValidation";
+import type { InputFieldType, LoginType } from "@/types/index";
 
-export default function InputPassword({
+export default function InputPassword<T extends LoginType>({
   labelText,
   placeholder,
   register,
@@ -14,7 +16,7 @@ export default function InputPassword({
   error,
   strength,
   password,
-}: InputFieldType) {
+}: InputFieldType<T>) {
   const [showPassword, setShowPassword] = useState<Boolean>(false);
 
   return (
@@ -31,7 +33,10 @@ export default function InputPassword({
           placeholder={placeholder}
           {...register(name, {
             required,
-            validate: (value) => strength ? validatePassword (value) : arePasswordsEquals(value, password!),
+            validate: (value: string) =>
+              strength === undefined
+                ? true
+                : validatePassword(value)
           })}
         />
 
