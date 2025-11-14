@@ -6,7 +6,7 @@ import type { LinkType } from "@/types/index";
 import { linkUserIcons } from "@/data/user";
 import { linkBossIcons } from "@/data/boss";
 import { linkAdminIcons } from "@/data/admin";
-import { useLogOut } from "@/hooks/useLogOut";
+import { useLogOut } from "@/hooks/auth/useLogOut";
 
 type NavbarProps = {
   links: LinkType[];

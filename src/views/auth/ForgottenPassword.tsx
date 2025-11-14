@@ -1,5 +1,5 @@
 import InputField from "@/components/general/inputs/InputField";
-import { useForgottenPassword } from "@/hooks/useForgottenPasword";
+import { useForgottenPassword } from "@/hooks/auth/useForgottenPasword";
 import type { LoginType } from "@/types/index";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -10,10 +10,10 @@ export default function ForgottenPassword() {
     handleSubmit,
     formState: { errors },
   } = useForm<{ email: LoginType["email"] }>();
-  const { mutate } = useForgottenPassword();
+  const { handleSendEmail, isPending } = useForgottenPassword();
 
   const handleReset = ({ email }: { email: LoginType["email"] }) => {
-    mutate(email);
+    handleSendEmail(email);
   };
 
   return (
@@ -42,18 +42,22 @@ export default function ForgottenPassword() {
             error={errors.email?.message}
           />
 
-          <input
+          <button
             type="submit"
-            className="bg-blue-900 text-white font-bold w-full rounded-lg p-3 hover:cursor-pointer hover:bg-blue-500 uppercase"
-            value={"Mandar correo de restablecimiento"}
-          />
+            className={`bg-blue-900 text-white font-bold w-full rounded-lg p-3 hover:cursor-pointer hover:bg-blue-500 
+            uppercase gap-5 flex justify-center ${isPending && "opacity-50"}`}
+            onClick={handleSubmit(handleReset)}
+          >
+            {isPending && <span className="loaderButton" />}
+            <p>{isPending ? "Enviando Correo" : "Enviar Correo"}</p>{" "}
+          </button>
         </form>
 
         <div className="flex flex-col space-y-3 items-center">
           <div className="flex text-white">
             <p>
               ¿Aun no tienes cuenta?,{" "}
-              <Link to={"/register"} className="hover:underline">
+              <Link to={"/register"} className="hover:underline text-blue-300 ">
                 registrate aquí.
               </Link>
             </p>
@@ -62,7 +66,7 @@ export default function ForgottenPassword() {
           <div className="flex text-white">
             <p>
               ¿Recordaste tu contraseña?,{" "}
-              <Link to={"/login"} className="hover:underline">
+              <Link to={"/login"} className="hover:underline text-blue-300 ">
                 logueate aquí.
               </Link>
             </p>

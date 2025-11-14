@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import 'primereact/resources/themes/lara-light-blue/theme.css';
+
 
 .rbc-toolbar {
   display: flex !important;
@@ -49,7 +49,8 @@
   height: 48px;
   animation: spin 1s linear infinite;
 }
-.loader:after, .loader:before {
+.loader:after,
+.loader:before {
   content: "";
   width: 24px;
   height: 24px;
@@ -59,10 +60,32 @@
   animation: spin 1s linear infinite;
   transform-origin: 0px 100%;
 }
-.loader:before {
+
+.loaderButton {
+  box-sizing: border-box;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+.loaderButton:after,
+.loaderButton:before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  border-radius: 50%;
+  background: oklch(37.9% 0.146 265.522);
+  animation: spin 1s linear infinite;
+  transform-origin: 0px 100%;
+}
+
+.loader:before,
+.loaderButton:before {
   transform-origin: 0 50%;
   background: oklch(80.9% 0.105 251.813);
 }
+
 @keyframes spin {
   to {
     transform: rotate(360deg);

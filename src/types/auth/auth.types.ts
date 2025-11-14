@@ -2,7 +2,7 @@ import type { FieldValues, Path, UseFormRegister } from "react-hook-form";
 import type { VisitorType } from "../user/user.types";
 
 export type RawRegisterType = Omit<VisitorType, "userId"> & {
-  password: string,
+  password: string;
   confirmPassword: string;
 };
 
@@ -18,9 +18,11 @@ export type InputFieldType<T extends FieldValues> = {
   error: string | undefined;
   strength?: boolean;
   password?: string;
+  type?: string;
+  rules?: Record<string, any>;
 };
 
 export type ResetPasswordType = {
-  newPassword: string,
-  token: string,
-}
+  newPassword: string;
+  token: string;
+};

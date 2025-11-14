@@ -1,15 +1,14 @@
 import ErrorMessage from "@/components/general/ErrorMessage";
 import InputField from "@/components/general/inputs/InputField";
 import InputPassword from "@/components/general/inputs/InputPassword";
+import { birthdateValidation } from "@/utils/auth/birthdateValidation";
+import { useRegister } from "@/hooks/auth/useRegister";
+import { arePasswordsEquals } from "@/utils/auth/passwordValidation";
 import type { RawRegisterType } from "@/types/index";
 import { FaEye, FaEyeSlash } from "@/icons/index";
 import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { birthdateValidation } from "@/utils/auth/birthdateValidation";
-import { useRegister } from "@/hooks/useRegister";
-
-import { arePasswordsEquals } from "@/utils/auth/passwordValidation";
 
 export default function RegisterView() {
   const {
@@ -22,13 +21,8 @@ export default function RegisterView() {
   const password = useWatch({ name: "password", control });
   const [showPassword, setShowPassword] = useState<Boolean>(false);
 
-  const { mutate } = useRegister();
+  const { handleRegister, isPending } = useRegister();
 
-  const handleRegister = (formData: RawRegisterType) => {
-    console.log("enviado");
-    const { confirmPassword, ...data } = formData;
-    mutate(data);
-  };
   return (
     <>
       <div className="bg-blue-900 px-4 md:px-20 py-10 rounded-lg flex flex-col items-center justify-center shadow-card w-full min-w-3xs max-w-6xl max-h-11/12">
@@ -103,6 +97,13 @@ export default function RegisterView() {
                   name="phoneNumber"
                   required="El número de teléfono es obligatorio"
                   error={errors.phoneNumber?.message}
+                  type={"tel"}
+                  rules={{
+                    pattern: {
+                      value: /^[+\d]?(?:[\d-.\s()]*)$/,
+                      message: "El número telefónico no es válido",
+                    },
+                  }}
                 />
               </div>
 
@@ -134,6 +135,13 @@ export default function RegisterView() {
                   name="email"
                   required="El email es obligatorio"
                   error={errors.email?.message}
+                  rules={{
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Email no válido",
+                    },
+                  }}
+                  type={"email"}
                 />
 
                 <InputPassword
@@ -190,18 +198,22 @@ export default function RegisterView() {
               </div>
             </div>
 
-            <input
+            <button
               type="submit"
-              className="bg-blue-900 text-white font-bold w-full rounded-lg p-3 hover:cursor-pointer hover:bg-blue-500
-              uppercase"
-              value={"Registrarse"}
-            />
+              disabled={isPending}
+              className={`bg-blue-900 text-white font-bold w-full rounded-lg p-3 hover:cursor-pointer hover:bg-blue-500
+              uppercase justify-center gap-5 flex ${isPending && "opacity-50"}`}
+            >
+              {isPending && <span className="loaderButton" />}
+
+              <p>{isPending ? "Registrando" : "Registrarse"}</p>
+            </button>
           </form>
 
           <div className="flex text-white">
             <p>
               ¿Ya tienes una cuenta?,{" "}
-              <Link to={"/login"} className="hover:underline">
+              <Link to={"/login"} className="hover:underline text-blue-300">
                 ingresa aquí.
               </Link>
             </p>

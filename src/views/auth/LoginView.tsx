@@ -1,6 +1,6 @@
 import InputField from "@/components/general/inputs/InputField";
 import InputPassword from "@/components/general/inputs/InputPassword";
-import { useLogin } from "@/hooks/useLogin";
+import { useLogin } from "@/hooks/auth/useLogin";
 
 import type { LoginType } from "@/types/index";
 import { useForm } from "react-hook-form";
@@ -60,7 +60,7 @@ export default function LoginView() {
           <div className="flex text-white">
             <p>
               ¿Aun no tienes cuenta?, {" "}
-              <Link to={"/register"} className="hover:underline">
+              <Link to={"/register"} className="hover:underline text-blue-300">
                 registrate aquí.
               </Link>
             </p>
@@ -69,7 +69,7 @@ export default function LoginView() {
           <div className="flex text-white">
             <p>
               ¿Olvidaste tu contraseña?,{" "}
-              <Link to={"/forgotten-password"} className="hover:underline">
+              <Link to={"/forgotten-password"} className="hover:underline text-blue-300">
                 recuperala aquí.
               </Link>
             </p>

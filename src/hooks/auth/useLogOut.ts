@@ -1,35 +1,30 @@
 import { logOut } from "@/api/AuthAPI";
-import { useToast } from "@/components/general/toastContext";
+import CustomToast from "@/components/general/toast/CustomToast";
+import { onToastError } from "@/utils/toast/onToastError";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const useLogOut = () => {
-  const toast = useToast();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
   const { mutate } = useMutation({
     mutationFn: logOut,
     onSuccess: (_data) => {
-      toast.current?.show({
-        severity: "success",
-        summary: `Sesión Cerrada Correctamente`,
-        detail: "Se ha cerrado sesión correctamente",
-        life: 3000,
+      toast.success(CustomToast, {
+        data: {
+          title: "Sesión Cerrada Correctamente",
+          content: "Hasta Pronto!",
+        },
+        autoClose: 3000,
+        theme: "colored",
       });
-
       queryClient.resetQueries({ queryKey: ["currentUser"] });
 
       navigate("/login");
     },
-    onError: (error) => {
-      toast.current?.show({
-        severity: "error",
-        summary: `Error`,
-        detail: error.message,
-        life: 3000,
-      });
-    },
+    onError: onToastError
   });
 
   return { mutate };

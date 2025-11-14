@@ -1,14 +1,20 @@
-import { adminArea } from "@/data/info";
+
+import { useGetBosses } from "@/hooks/boss/useGetBosses";
 import { FaTrashAlt, FaEdit } from "@/icons/index";
 import { useAppStore } from "@/store/useAppStore";
+import type { BossType } from "@/types/index";
 
 export default function TableAdmin() {
-  const { setIsOpen, openModal } = useAppStore();
+  const { setIsOpen, openModal, setCurrentBoss } = useAppStore();
+  const { bossArray } = useGetBosses();
 
-  const handleEdit = () => {
+  const handleEdit = (boss: BossType) => {
     setIsOpen();
     openModal("edit-boss");
+    setCurrentBoss(boss);
   };
+
+  const handleDelete = (bossId: BossType["userId"]) => {};
 
   return (
     <table className="border-spacing-2.5 w-full">
@@ -30,30 +36,34 @@ export default function TableAdmin() {
       </thead>
 
       <tbody>
-        {adminArea.map((admin) => (
-          <tr key={admin.email}>
-            <td className="px-3 py-2 border-blue-900 border">{admin.name} </td>
-            <td className="px-3 py-2 border-blue-900 border">{admin.email} </td>
-            <td className="px-3 py-2 border-blue-900 border">Ingenieria y arquitectura </td>
-            <td className="gap-3 px-3 py-2 border-blue-900 border">
-              <div className="flex flex-col md:flex-row justify-center items-center gap-5">
-                <button
-                  type="button"
-                  className="rounded-lg border border-gray-400 text-gray-500 hover:bg-red-200 hover:text-red-500 hover:border-red-500 transition-colors p-3"
-                >
-                  <FaTrashAlt className="w-4 h-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={handleEdit}
-                  className="p-3 rounded-lg border border-gray-400 text-gray-500 hover:bg-yellow-100 hover:text-yellow-500 hover:border-yellow-500 transition-colors"
-                >
-                  <FaEdit className="w-4 h-4" />
-                </button>
-              </div>
-            </td>
-          </tr>
-        ))}
+        {bossArray &&
+          bossArray.map((boss) => (
+            <tr key={boss.userId}>
+              <td className="px-3 py-2 border-blue-900 border">{`${boss.names} ${boss.lastName} ${boss.secondLastName}`}</td>
+              <td className="px-3 py-2 border-blue-900 border">{boss.email}</td>
+              <td className="px-3 py-2 border-blue-900 border">
+                {boss.area.name}
+              </td>
+              <td className="gap-3 px-3 py-2 border-blue-900 border">
+                <div className="flex flex-col md:flex-row justify-center items-center gap-5">
+                  <button
+                    onClick={() => handleDelete(boss.userId)}
+                    type="button"
+                    className="rounded-lg border border-gray-400 text-gray-500 hover:bg-red-200 hover:text-red-500 hover:border-red-500 transition-colors p-3"
+                  >
+                    <FaTrashAlt className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleEdit(boss)}
+                    className="p-3 rounded-lg border border-gray-400 text-gray-500 hover:bg-yellow-100 hover:text-yellow-500 hover:border-yellow-500 transition-colors"
+                  >
+                    <FaEdit className="w-4 h-4" />
+                  </button>
+                </div>
+              </td>
+            </tr>
+          ))}
       </tbody>
     </table>
   );

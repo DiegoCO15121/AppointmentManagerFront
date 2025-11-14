@@ -28,7 +28,7 @@ export default function ModalLayout({ children, onClose }: ModalLayoutProps) {
       as={Fragment}
       afterLeave={handelAfterLeave}
     >
-      <Dialog as="div" className="relative z-10" onClose={setIsOpen}>
+      <Dialog as="div" className="relative z-30" onClose={setIsOpen}>
         <TransitionChild
           as={Fragment}
           enter="ease-out duration-300"

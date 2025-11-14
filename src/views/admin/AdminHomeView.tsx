@@ -49,10 +49,10 @@ export default function AdminHomeView() {
             <hr className="border border-gray-200 w-full" />
 
             <div className="space-y-10 flex flex-col overflow-x-auto w-full">
-              <div className="flex flex-col md:flex-row justify-between">
+              <div className="flex flex-col md:flex-row justify-between space-y-3 items-center">
                 <div className="flex flex-col space-y-3">
                   <h2 className="text-gray-600 font-bold text-3xl">
-                    Administra Jefes de Cada Área
+                    Administra Administradores de Área
                   </h2>
                   <p className="text-gray-600 text-xl">
                     Visualiza, edita o elimina a los jefes de cada Área
@@ -68,7 +68,7 @@ export default function AdminHomeView() {
               hover:text-white transition-colors hover:shadow-lg"
                   >
                     <MdPersonSearch className="w-5 h-5" />
-                    <p>Buscar Jefe</p>
+                    <p>Buscar Administrador</p>
                   </button>
                 </div>
               </div>

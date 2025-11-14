@@ -1,8 +1,10 @@
 import z from "zod";
 
-const AreaSchema = z.object({
+export const AreaSchema = z.object({
   id: z.string(),
   name: z.string(),
 });
 
-export type AddAreaType = z.infer<typeof AreaSchema>;
+export const AreasSchema = z.array(AreaSchema);
+
+export type AreaType = z.infer<typeof AreaSchema>;

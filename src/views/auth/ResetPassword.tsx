@@ -1,6 +1,6 @@
 import ErrorMessage from "@/components/general/ErrorMessage";
 import InputPassword from "@/components/general/inputs/InputPassword";
-import { useResetPassword } from "@/hooks/useResetPassword";
+import { useResetPassword } from "@/hooks/auth/useResetPassword";
 import type { RawRegisterType } from "@/types/index";
 import { arePasswordsEquals } from "@/utils/auth/passwordValidation";
 import { useState } from "react";
