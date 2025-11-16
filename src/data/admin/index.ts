@@ -6,3 +6,5 @@ export const adminLinks = [
 ];
 
 export const linkAdminIcons = [FaHome, FaBuilding];
+
+export const tabListSecurityModal = ["Administrar Cuentas" , "Agregar Cuenta"]

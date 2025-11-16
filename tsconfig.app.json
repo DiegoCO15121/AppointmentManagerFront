@@ -22,6 +22,8 @@
       "@/api/*" : ["api/*"],
       "@/lib/*" : ["lib/*"],
       "@/middlewares/*" : ["middlewares/*"],
+      "@/styles/*" : ["styles/*"],
+      "@/assets/*" : ["assets/*"],
 
     },
 

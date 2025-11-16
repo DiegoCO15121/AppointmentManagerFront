@@ -1,6 +1,7 @@
+import DeleteButtonIcon from "@/components/general/buttons/DeleteButtonIcon";
+import EditButtonIcon from "@/components/general/buttons/EditButtonIcon";
 import { useAppStore } from "@/store/useAppStore";
 import type { BossType } from "@/types/index";
-import { FaEdit, FaTrashAlt } from "@/icons/index";
 
 type BossCardProps = {
   boss: BossType;
@@ -27,20 +28,8 @@ export default function BossCard({ boss }: BossCardProps) {
         </div>
 
         <div className="flex flex-col md:flex-row justify-center items-center gap-5">
-          <button
-            onClick={() => {}}
-            type="button"
-            className="rounded-lg border border-gray-400 text-gray-500 hover:bg-red-200 hover:text-red-500 hover:border-red-500 transition-colors p-3"
-          >
-            <FaTrashAlt className="w-4 h-4" />
-          </button>
-          <button
-            type="button"
-            onClick={() => handleEdit(boss)}
-            className="p-3 rounded-lg border border-gray-400 text-gray-500 hover:bg-yellow-100 hover:text-yellow-500 hover:border-yellow-500 transition-colors"
-          >
-            <FaEdit className="w-4 h-4" />
-          </button>
+          <DeleteButtonIcon />
+          <EditButtonIcon onClick={() => handleEdit(boss)} />
         </div>
       </div>
       <hr className="text-blue-800" />

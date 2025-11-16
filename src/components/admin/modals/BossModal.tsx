@@ -1,7 +1,7 @@
 import SubmitButton from "@/components/general/buttons/SubmitButton";
 import ErrorMessage from "@/components/general/ErrorMessage";
 import InputField from "@/components/general/inputs/InputField";
-import { useArea } from "@/hooks/useArea";
+
 import { useAppStore } from "@/store/useAppStore";
 import type { AddBossType } from "@/types/index";
 import { useEffect } from "react";
@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useCreateBoss } from "@/hooks/boss/useCreateBoss";
 import { useUpdateBoss } from "@/hooks/boss/useUpdateBoss";
 import { useGetBoss } from "@/hooks/boss/useGetBoss";
+import { useGetAreas } from "@/hooks/area/useGetAreas";
 
 export default function BossModal() {
   const defaultValues = {
@@ -28,7 +29,7 @@ export default function BossModal() {
     reset,
   } = useForm<AddBossType>({ defaultValues });
 
-  const { areasArray } = useArea();
+  const { areasArray } = useGetAreas();
   const { modal, currentBoss, setIsOpen, clearModal } = useAppStore();
   const { bossRawData } = useGetBoss(currentBoss?.userId);
   const { handleCreateBoss } = useCreateBoss();
@@ -36,10 +37,8 @@ export default function BossModal() {
 
   useEffect(() => {
     if (currentBoss && modal === "edit-boss" && bossRawData) {
-      console.log(bossRawData);
       const { area, adminRole, userRole, userId, ...data } = bossRawData;
       const bossData = { ...data, areaId: area.id, role: adminRole };
-      console.log(bossData);
       reset(bossData);
     }
   }, [reset, currentBoss, bossRawData]);

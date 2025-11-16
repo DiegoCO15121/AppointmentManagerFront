@@ -1,28 +1,24 @@
+import { useGetSecurityEmails } from "@/hooks/securityEmail/useGetSecurityEmails";
 import { FaSearch } from "@/icons/index";
-
 import { useState, type ChangeEvent } from "react";
-import { useGetBosses } from "@/hooks/boss/useGetBosses";
-import BossCard from "../cards/BossCard";
+import SecurityEmailCard from "../cards/SecurityEmailCard";
 
-export default function SearchBoss() {
+export default function AdminSecurityAccounts() {
   const [search, setSearch] = useState("");
-  const { bossArray } = useGetBosses({ search });
+  const { securityEmails } = useGetSecurityEmails({ search });
 
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
   return (
     <div className="space-y-5">
       <div className="space-y-3">
-        <h2 className="text-gray-500 font-bold text-xl">
-          Buscar Administrador de Área
-        </h2>
         <form className="relative flex w-full flex-col space-y-3 items-center">
           <input
             type="text"
             className="w-full border-2 border-gray-500 rounded-lg p-2"
-            onChange={handleOnChange}
+            onChange={handleChange}
           />
           <button
             type="button"
@@ -33,10 +29,10 @@ export default function SearchBoss() {
         </form>
       </div>
 
-      {bossArray && search.trim() !== "" && (
+      {securityEmails  && (
         <div className="flex flex-col space-y-4">
-          {bossArray.map((boss) => (
-            <BossCard key={boss.userId} boss={boss} />
+          {securityEmails.map((email) => (
+            <SecurityEmailCard securityEmail={email} />
           ))}
         </div>
       )}

@@ -1,23 +1,25 @@
-import AreaCard from "@/components/admin/AreaCard";
 import AddAreaModal from "@/components/admin/modals/AreaModal";
 import ModalLayout from "@/components/general/modal/ModalLayout";
 import { useAppStore } from "@/store/useAppStore";
 import { FaPlus } from "@/icons/index";
+import AreaCardAdmin from "@/components/admin/cards/AreaCardAdmin";
+import { useGetAreas } from "@/hooks/area/useGetAreas";
+import type { AreaType } from "@/types/area/area.types";
 
 export default function AdminAreasView() {
-  const { setIsOpen, openModal, modal } = useAppStore();
+  const { setIsOpen, openModal, modal, setCurrentArea } = useAppStore();
+  const { areasArray } = useGetAreas();
 
   const handleArea = () => {
     setIsOpen();
     openModal("add-area");
   };
 
-  const handleEdit = () => {
+  const handleEdit = (area: AreaType) => {
     setIsOpen();
     openModal("edit-area");
-    console.log("first")
+    setCurrentArea(area)
   };
-
 
   return (
     <>
@@ -29,7 +31,6 @@ export default function AdminAreasView() {
               Administra las áreas de la universidad
             </p>
           </div>
-
           <button
             type="button"
             onClick={handleArea}
@@ -43,34 +44,15 @@ export default function AdminAreasView() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
-          <AreaCard
-            title="Departamento de Ingeniería"
-            description="Departamento de Ingeniería de Sistemas y Computación"
-            boss="Dr. María Gonzáles"
-            onClickEdit={handleEdit}
-          />
-          <AreaCard
-            title="Departamento de Ingeniería"
-            description="Departamento de Ingeniería de Sistemas y Computación"
-            boss="Dr. María Gonzáles"
-          />
-          <AreaCard
-            title="Departamento de Ingeniería"
-            description="Departamento de Ingeniería de Sistemas y Computación"
-            boss="Dr. María Gonzáles"
-          />
-          <AreaCard
-            title="Departamento de Ingeniería"
-            description="Departamento de Ingeniería de Sistemas y Computación"
-            boss="Dr. María Gonzáles"
-          />
+          {areasArray?.map((area) => (
+            <AreaCardAdmin key={area.id} area={area} onClickEdit={() =>  handleEdit(area)} />
+          ))}
         </div>
       </div>
       <ModalLayout>
         {modal === "edit-area" && <AddAreaModal />}
         {modal === "add-area" && <AddAreaModal />}
-    
-        </ModalLayout>
+      </ModalLayout>
     </>
   );
 }

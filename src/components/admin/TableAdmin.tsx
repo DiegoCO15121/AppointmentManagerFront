@@ -1,12 +1,13 @@
-
 import { useGetBosses } from "@/hooks/boss/useGetBosses";
-import { FaTrashAlt, FaEdit } from "@/icons/index";
+import { FaEdit } from "@/icons/index";
 import { useAppStore } from "@/store/useAppStore";
 import type { BossType } from "@/types/index";
+import DeleteButtonIcon from "../general/buttons/DeleteButtonIcon";
+import EditButtonIcon from "../general/buttons/EditButtonIcon";
 
 export default function TableAdmin() {
   const { setIsOpen, openModal, setCurrentBoss } = useAppStore();
-  const { bossArray } = useGetBosses();
+  const { bossArray } = useGetBosses({ enabled: true });
 
   const handleEdit = (boss: BossType) => {
     setIsOpen();
@@ -46,20 +47,8 @@ export default function TableAdmin() {
               </td>
               <td className="gap-3 px-3 py-2 border-blue-900 border">
                 <div className="flex flex-col md:flex-row justify-center items-center gap-5">
-                  <button
-                    onClick={() => handleDelete(boss.userId)}
-                    type="button"
-                    className="rounded-lg border border-gray-400 text-gray-500 hover:bg-red-200 hover:text-red-500 hover:border-red-500 transition-colors p-3"
-                  >
-                    <FaTrashAlt className="w-4 h-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleEdit(boss)}
-                    className="p-3 rounded-lg border border-gray-400 text-gray-500 hover:bg-yellow-100 hover:text-yellow-500 hover:border-yellow-500 transition-colors"
-                  >
-                    <FaEdit className="w-4 h-4" />
-                  </button>
+                  <DeleteButtonIcon onClick={() => handleDelete(boss.userId)} />
+                  <EditButtonIcon onClick={() => handleEdit(boss)} />
                 </div>
               </td>
             </tr>

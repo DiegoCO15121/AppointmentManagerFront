@@ -7,10 +7,11 @@ export const UserSchema = z.object({
   lastName: z.string(),
   secondLastName: z.string(),
   email: z.string(),
-  /* password: z.string(), */
   gender: z.string().or(z.enum(["masculino", "femenino"])),
   userRole: z.enum(["visitor", "university admin", "system admin"]),
 });
+
+export type UserType = z.infer<typeof UserSchema>;
 
 const VisitorSchema = UserSchema.extend({
   birth_date: z.string(),
@@ -18,11 +19,11 @@ const VisitorSchema = UserSchema.extend({
   birthDate: z.string(),
 });
 
-export type UserType = z.infer<typeof UserSchema>;
-
 export type VisitorType = z.infer<typeof VisitorSchema>;
 
 // Boss
+
+
 export const BossSchema = UserSchema.extend({
   area: AreaSchema,
   adminRole: z.string(),

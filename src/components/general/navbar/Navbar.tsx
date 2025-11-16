@@ -52,7 +52,7 @@ export default function Navbar({ links, currentLocation }: NavbarProps) {
         </button>
       </nav>
 
-      <div className="md:hidden">
+      <div className="md:hidden flex ">
         <Menu>
           <MenuButton>
             <GiHamburgerMenu className="w-6 h-6 text-white hover:cursor-pointer" />
@@ -61,9 +61,9 @@ export default function Navbar({ links, currentLocation }: NavbarProps) {
           <MenuItems
             transition
             anchor="bottom end"
-            className="mt-5 origin-top-right rounded-lg border-3 border-blue-900 bg-blue-900/60 backdrop-blur-3xl 
-            space-y-1 p-2 text-sm text-white uppercase font-bold transition duration-100 ease-out [--anchor-gap:--spacing(1)] 
-            focus:outline-none data-closed:scale-95 data-closed:opacity-0 w-60"
+            className="mt-6 rounded-lg border-3 border-blue-900 bg-blue-900/70  
+            space-y-1 p-2 text-sm text-white uppercase font-bold transition duration-100 ease-out 
+            focus:outline-none data-closed:scale-80 data-closed:opacity-0 w-60"
           >
             {links.map((link, index) => {
               const Icon = linkIcons[index];
@@ -78,7 +78,7 @@ export default function Navbar({ links, currentLocation }: NavbarProps) {
                     }
                     to={link.link}
                   >
-                    <p>{link.name}</p>
+                    <p className="text-md">{link.name}</p>
                     <Icon />
                   </NavLink>
                 </MenuItem>
@@ -90,7 +90,7 @@ export default function Navbar({ links, currentLocation }: NavbarProps) {
                 onClick={handleLogOut}
                 className="group flex justify-between w-full items-center rounded-lg px-3 py-1.5 data-focus:bg-blue-900/60"
               >
-                <p>Cerrar Sesión</p>
+                <p className="uppercase">Cerrar Sesión</p>
                 <IoLogOut />
               </button>
             </MenuItem>

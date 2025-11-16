@@ -28,10 +28,15 @@ export async function getArea(areaId: AreaType["id"]) {
   }
 }
 
-export async function getAreas() {
+export async function getAreas({
+  page,
+  limit,
+}: {
+  page?: number;
+  limit?: number;
+}) {
   try {
-    const { data } = await api.get(`/area`);
-
+    const { data } = await api.get(`/area`, { params: { page, limit } });
     const response = AreasSchema.safeParse(data);
 
     if (response.success) return response.data;
@@ -42,17 +47,18 @@ export async function getAreas() {
 
 export async function updateArea(areaData: AreaType) {
   try {
-    const { data } = await api.patch<string>(`/area/${areaData.id}`);
+    const {id, name} = areaData
+    const { data } = await api.patch<string>(`/area/${id}`, {name});
 
     return data;
-  } catch (error) { 
+  } catch (error) {
     catchError(error);
   }
 }
 
-export async function deleteArea(areaData: AreaType) {
+export async function deleteArea(areaId: AreaType["id"]) {
   try {
-    const { data } = await api.delete<string>(`/area/${areaData.id}`);
+    const { data } = await api.delete<string>(`/area/${areaId}`);
 
     return data;
   } catch (error) {

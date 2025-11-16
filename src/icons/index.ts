@@ -1,4 +1,11 @@
-import { MdDateRange, MdEventNote, MdPersonSearch  } from "react-icons/md";
+import {
+  MdDateRange,
+  MdEventNote,
+  MdPersonSearch,
+  MdOutlineSecurity,
+  MdBadge,
+  MdEmail 
+} from "react-icons/md";
 import {
   FaCheck,
   FaClock,
@@ -11,11 +18,11 @@ import {
   FaUserPlus,
   FaTrashAlt,
   FaEdit,
-  FaSearch 
+  FaSearch,
 } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IoCloseSharp, IoLogOut  } from "react-icons/io5";
+import { IoCloseSharp, IoLogOut } from "react-icons/io5";
 import { IoIosReturnLeft } from "react-icons/io";
 
 export {
@@ -38,5 +45,8 @@ export {
   IoCloseSharp,
   FaSearch,
   IoIosReturnLeft,
-  IoLogOut 
+  IoLogOut,
+  MdOutlineSecurity,
+  MdBadge,
+  MdEmail  
 };
